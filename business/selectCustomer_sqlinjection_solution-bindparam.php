@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Search Customer</h1>
-    <form action="select_sqlinjection_solution-bindparam.php" method="GET">
+    <form action="selectCustomer_sqlinjection_solution-bindparam.php" method="GET">
         <input type="text" placeholder="Enter Customer ID" name="customerID">
 
         <br> <br>
