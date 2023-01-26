@@ -27,7 +27,7 @@ $stmt->execute();
             <?php echo $result["P_id"]; ?></a></td>
     
     <td><?php echo $result["P_name"]; ?></td>
-    <td><?php echo $result["P_UserName"]; ?></td>
+    <td><?php echo $result["P_Username"]; ?></td>
   </tr>
 
 <?php

@@ -43,7 +43,7 @@ if (isset($_GET["P_name"]))
 
   <tr>
     <th width="130">อีเมล </th>
-    <td><?php echo $result["P_UserName"]; ?></td>
+    <td><?php echo $result["P_Username"]; ?></td>
   </tr>
 
   

@@ -13,6 +13,6 @@ $result = $stmt->fetchAll();
 //print_r($result);
 
 foreach ($result as $r) {
-print $r['P_id'] .'  '. $r['P_name'].' '.$r['P_debt'].'  '.$r['P_UserName'] .'<br>';
+print $r['P_id'] .'  '. $r['P_name'].' '.$r['P_debt'].'  '.$r['P_Username'] .'<br>';
 }
 ?>
