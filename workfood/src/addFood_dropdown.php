@@ -22,17 +22,24 @@ if (isset($_POST['submit'])) {
     if (!empty($_POST['FoodID']) && !empty($_POST['FoodName'])) {
         echo '<br>' . $_POST['FoodID'];
         //require 'connect.php';
+        $uploadFile = $_FILES['image']['name'];
+        $tmpFile = $_FILES['image']['tmp_name'];
+        echo " upload file = " . $uploadFile;
+        echo " tmp file = " . $tmpFile;
 
-        $sql = "insert into food values (:FoodID, :FoodName, :FoodPrice, :FoodTypeID)";;
+        $sql = "insert into food values (:FoodID, :FoodName, :FoodPrice, :FoodTypeID, :image)";
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':FoodID', $_POST['FoodID']);
         $stmt->bindParam(':FoodName', $_POST['FoodName']);
         $stmt->bindParam(':FoodPrice', $_POST['FoodPrice']);
         $stmt->bindParam(':FoodTypeID', $_POST['FoodTypeID']);
-        //$stmt->bindParam(':CountryCode', $_POST['CountryCode']);
-        //$stmt->bindParam(':OutstandingDebt', $_POST['OutstandingDebt']);
-        
+        $stmt->bindParam(':image', $uploadFile);
+        echo "image = " . $uploadFile;
+
+        $fullpath = "../image/" . $uploadFile;
+         echo " fullpath = " . $fullpath;
+         move_uploaded_file($tmpFile, $fullpath);
 
         try {
             if ($stmt->execute()):
@@ -58,7 +65,7 @@ if (isset($_POST['submit'])) {
       <div class="row">
         <div class="col-md-4"> <br>
             <h3>ฟอร์มเพิ่มข้อมูลลูกค้า</h3>
-            <form  action="addFood_dropdown.php" method="POST">
+            <form  action="addFood_dropdown.php" method="POST" enctype="multipart/form-data">
             <br>
             <input type="text" placeholder="Enter Your FoodID" name="FoodID"> 
             <br> <br>
@@ -66,7 +73,7 @@ if (isset($_POST['submit'])) {
             <br> <br>
             <input type="number" placeholder="Enter Your FoodPrice" name="FoodPrice">
             <br> <br>   
-            <label>Select a country code</label>
+            <label>Select a foodtype</label>
                 <select name="FoodTypeID">
                     <?php while ($cc = $stmt_s->fetch(PDO::FETCH_ASSOC)) { ?>
                         <option value="<?php echo $cc['FoodTypeID']; ?>">
@@ -75,7 +82,9 @@ if (isset($_POST['submit'])) {
                     <?php } ?>
                 </select>       
             <br> <br>
-
+            แนบรูปภาพ:
+            <input type="file" name="image" required>
+            <br><br>
             <input type="submit" value="Submit" name="submit" />
             </form>
             </div>

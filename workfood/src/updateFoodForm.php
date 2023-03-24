@@ -42,12 +42,12 @@ if (isset($_GET['FoodID'])) {
             
                 <label for="name" class="col-sm-2 col-form-label"> ชื่ออาหาร:  </label>
               
-                <input type="text" name="FoodName" class="form-control" required value=  >           
+                <input type="text" name="FoodName" class="form-control" required value=<?= $result['FoodName'];?>  >           
            
             
                 <label for="name" class="col-sm-2 col-form-label"> ราคาอาหาร :  </label>
              
-                <input type="text" name="FoodPrice" class="form-control" required value=  >
+                <input type="text" name="FoodPrice" class="form-control" required value=<?= $result['FoodPrice'];?>  >
 
             <br> <br>
                 <label>เลือกประเภทอาหาร</label>
@@ -59,7 +59,6 @@ if (isset($_GET['FoodID'])) {
                     <?php } ?>
                 </select>       
             <br> <br>
-          
             <br> <button type="submit" class="btn btn-primary">แก้ไขข้อมูล</button>
           </form>
         </div>

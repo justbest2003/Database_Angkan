@@ -12,18 +12,18 @@
 <?php
 require '../connect.php';
 
-$sql_select_country = 'SELECT * FROM country ORDER BY CountryCode';
-$stmt = $conn->prepare($sql_select_country);
-$stmt->execute();
+$sql_select = 'SELECT * FROM country ORDER BY CountryCode';
+$stmt_s = $conn->prepare($sql_select);
+$stmt_s->execute();
 
 echo "CustomerID = ".$_GET['CustomerID'];
 
 if (isset($_GET['CustomerID'])) {
     $sql_select_customer = 'SELECT * FROM customer WHERE CustomerID=?';
-    $stmt_customer = $conn->prepare($sql_select_customer);
+    $stmt = $conn->prepare($sql_select_customer);
     $stmt->execute([$_GET['CustomerID']]);
     echo "get = ".$_GET['CustomerID'];
-    $result = $stmt_customer->fetch(PDO::FETCH_ASSOC);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ?>
 
@@ -37,12 +37,12 @@ if (isset($_GET['CustomerID'])) {
             
                 <label for="name" class="col-sm-2 col-form-label"> ชื่อ:  </label>
               
-                <input type="text" name="Name" class="form-control" required value=  >           
+                <input type="text" name="Name" class="form-control" required value= "<?= $result['Name'];?> ">           
            
             
                 <label for="name" class="col-sm-2 col-form-label"> อีเมล์ :  </label>
              
-                <input type="email" name="Email" class="form-control" required value=  >
+                <input type="email" name="Email" class="form-control" required value="<?= $result['Email'];?> ">
           
             <br> <button type="submit" class="btn btn-primary">แก้ไขข้อมูล</button>
           </form>
