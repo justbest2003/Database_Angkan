@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2023 at 04:52 PM
+-- Generation Time: Mar 31, 2023 at 03:19 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -31,40 +31,22 @@ CREATE TABLE `food` (
   `FoodID` char(3) NOT NULL,
   `FoodName` varchar(255) NOT NULL,
   `FoodPrice` int(11) NOT NULL,
-  `FoodTypeID` char(3) NOT NULL
+  `FoodTypeID` char(3) NOT NULL,
+  `Image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `food`
 --
 
-INSERT INTO `food` (`FoodID`, `FoodName`, `FoodPrice`, `FoodTypeID`) VALUES
-('01', 'ก๋วยเตี๋ยวแห้ง', 45, 'FT1'),
-('02', 'ก๋วยเตี๋ยวต้มส้ม', 45, 'FT1'),
-('03', 'ผัดซีอิ๊ว', 50, 'FT1'),
-('04', 'ตำซั่ว', 45, 'FT1'),
-('05', 'มะนาวโซดา', 40, 'FT2'),
-('06', 'นมชมพูเย็น', 40, 'FT2'),
-('07', 'ข้าวผัดไก่', 45, 'FT1');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `foodtype`
---
-
-CREATE TABLE `foodtype` (
-  `FoodTypeID` char(3) NOT NULL,
-  `FoodTypeName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `foodtype`
---
-
-INSERT INTO `foodtype` (`FoodTypeID`, `FoodTypeName`) VALUES
-('FT1', 'อาหาร'),
-('FT2', 'เครื่องดื่ม');
+INSERT INTO `food` (`FoodID`, `FoodName`, `FoodPrice`, `FoodTypeID`, `Image`) VALUES
+('01', 'ก๋วยเตี๋ยวแห้ง', 45, 'FT1', 'image1.jpg'),
+('02', 'ก๋วยเตี๋ยวต้มส้ม', 45, 'FT1', 'image2.jpg'),
+('03', 'ผัดซีอิ๊ว', 50, 'FT1', 'image3.jpg'),
+('04', 'ตำซั่ว', 45, 'FT1', 'image4.jpg'),
+('05', 'มะนาวโซดา', 40, 'FT2', 'image5.jpg'),
+('06', 'นมชมพูเย็น', 40, 'FT2', 'image6.jpg'),
+('07', 'ข้าวผัดไก่', 45, 'FT1', 'image7.jpg');
 
 --
 -- Indexes for dumped tables
@@ -76,12 +58,6 @@ INSERT INTO `foodtype` (`FoodTypeID`, `FoodTypeName`) VALUES
 ALTER TABLE `food`
   ADD PRIMARY KEY (`FoodID`),
   ADD KEY `FoodTypeID` (`FoodTypeID`);
-
---
--- Indexes for table `foodtype`
---
-ALTER TABLE `foodtype`
-  ADD PRIMARY KEY (`FoodTypeID`);
 
 --
 -- Constraints for dumped tables
